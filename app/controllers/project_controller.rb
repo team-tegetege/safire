@@ -24,6 +24,33 @@ class ProjectController < ApplicationController
         )
         tag.save!
       end
+      project_params["abstract_background"].each do |abstract|
+        abstract = Abstract.new(
+          project_id: project.id,
+          kind: 0,
+          score: abstract["rankScore"],
+          abstract: abstract["text"]
+        )
+        abstract.save!
+      end
+      project_params["abstract_idea"].each do |abstract|
+        abstract = Abstract.new(
+          project_id: project.id,
+          kind: 1,
+          score: abstract["rankScore"],
+          abstract: abstract["text"]
+        )
+        abstract.save!
+      end
+      project_params["abstract_technology"].each do |abstract|
+        abstract = Abstract.new(
+          project_id: project.id,
+          kind: 2,
+          score: abstract["rankScore"],
+          abstract: abstract["text"]
+        )
+        abstract.save!
+      end
     end
 
     render :json => { message: "プロジェクトの登録に成功しました." }
@@ -53,7 +80,10 @@ class ProjectController < ApplicationController
         :thumbnail_technology,
         :appendix,
         :color,
-        tag_list: []
+        tag_list: [],
+        abstract_background: [:text, :rankScore],
+        abstract_idea: [:text, :rankScore],
+        abstract_technology: [:text, :rankScore]
       )
     end
 end

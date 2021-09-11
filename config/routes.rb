@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :home, only: %i(index)
   resources :project, only: %i(create show)
   resources :mypage, only: %i(show)
+  resources :presentation, only: %i(show)
 end
