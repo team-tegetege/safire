@@ -2,7 +2,9 @@ class RateController < ApplicationController
   def create
     rate = Rate.find_or_initialize_by(
       project_id: rate_params["project_id"],
-      user_id: rate_params["user_id"],
+      user_id: rate_params["user_id"]
+    )
+    rate.assign_attributes(
       rate: rate_params["rate"]
     )
     rate.save!
