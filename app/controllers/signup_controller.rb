@@ -19,6 +19,7 @@ class SignupController < ApplicationController
         user_id: signup_params["user_id"],
         age: signup_params["age"],
         gender: signup_params["gender"],
+        school_grade: signup_params["school_grade"],
         description: signup_params["description"]
       )
       profile.save!
@@ -43,6 +44,7 @@ class SignupController < ApplicationController
         :age,
         :gender,
         :description,
+        :school_grade,
         # tags: []
       )
     end
