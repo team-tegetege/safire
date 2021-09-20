@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :project, only: %i(create show update)
   resources :mypage, only: %i(show)
   resources :presentation, only: %i(show)
+  resources :member, only: %i(index create show update)
 end
