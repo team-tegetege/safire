@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :mypage, only: %i(show)
   resources :presentation, only: %i(show)
   resources :member, only: %i(index create show update)
+  resources :rate, only: %i(create)
 end
