@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post :login, on: :member
   end
   resources :home, only: %i(index)
-  resources :project, only: %i(create show)
+  resources :project, only: %i(create show update)
   resources :mypage, only: %i(show)
   resources :presentation, only: %i(show)
 end
