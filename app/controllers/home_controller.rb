@@ -22,14 +22,15 @@ class HomeController < ApplicationController
     
     # おすすめユーザ3名を返す
 
-    render :json => { project_list: projects_list, user_list: [], top_project_list: [] }
+    render :json => { project_list: projects_list, user_list: RecommendUserService.recommend_user(home_params["user_id"]), top_project_list: [] }
   end
 
   private
     def home_params
       params.permit(
         :limit,
-        :offset
+        :offset,
+        :user_id
       )
     end
 end
