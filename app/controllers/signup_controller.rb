@@ -30,6 +30,7 @@ class SignupController < ApplicationController
       #   )
       #   favorite.save!:
       # end
+      CosineSimilarityService.all_user  # 暫定処理
     end
     # user.authenticate
     render :json => { message: "ユーザ登録に成功しました。"}
