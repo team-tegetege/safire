@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_002411) do
+ActiveRecord::Schema.define(version: 2021_09_21_191124) do
 
   create_table "abstracts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "project_id"
@@ -68,6 +68,23 @@ ActiveRecord::Schema.define(version: 2021_09_21_002411) do
     t.integer "project_id", null: false
     t.string "user_id", null: false
     t.float "rate", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recommend_projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.integer "recommend_project", null: false
+    t.integer "ranking", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recommend_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "recommend_user", null: false
+    t.float "score", null: false
+    t.integer "ranking", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
