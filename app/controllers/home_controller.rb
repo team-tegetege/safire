@@ -19,10 +19,14 @@ class HomeController < ApplicationController
     end
     
     # 閲覧数上位5プロジェクト
-    
-    # おすすめユーザ3名を返す
+    top_project_list = []
+    top_projects = Project.order(view_times: "DESC").order(created_at: "DESC").limit(5)
+    top_projects.each do |project|
+      tags_for_top = ProjectTag.where(project_id: project.id)
+      top_project_list.push({"id": project["id"], "name": project["title"], "tag_list": tags_for_top.map(&:tag)})
+    end
 
-    render :json => { project_list: projects_list, user_list: RecommendUserService.recommend_user(home_params["user_id"]), top_project_list: [] }
+    render :json => { project_list: projects_list, user_list: RecommendUserService.recommend_user(home_params["user_id"]), top_project_list: top_project_list }
   end
 
   private

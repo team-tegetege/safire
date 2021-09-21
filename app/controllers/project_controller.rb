@@ -59,9 +59,13 @@ class ProjectController < ApplicationController
   def show
     project = Project.find(project_params["id"])
     tags = ProjectTag.where(project_id: project_params["id"])
-    
+
     pre_json = { message: "プロジェクトの詳細の取得に成功しました.", tag_list: tags.map(&:tag) }
-    render :json => pre_json.merge(project.attributes)
+    return_json = pre_json.merge(project.attributes)
+    times = project["view_times"] + 1
+    project.assign_attributes(view_times: times)
+    project.save!
+    render :json => return_json
   end
 
   def update
