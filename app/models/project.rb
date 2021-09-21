@@ -5,10 +5,4 @@ class Project < ApplicationRecord
   has_many :rate, primary_key: :id, foreign_key: :project_id
 
   accepts_nested_attributes_for :project_tag
-
-  enum color: {
-    "red": 0,
-    "blue": 1,
-    "green": 2
-  }
 end
