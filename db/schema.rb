@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_171907) do
+ActiveRecord::Schema.define(version: 2021_09_21_002411) do
 
   create_table "abstracts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "project_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_171907) do
     t.text "appendix"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "color"
+    t.string "color", default: "99ff99", null: false
   end
 
   create_table "rates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
