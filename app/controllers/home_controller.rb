@@ -12,7 +12,7 @@ class HomeController < ApplicationController
       # くっつけて
       one_object = project.attributes.merge({ tag_list: tags.map(&:tag) })
       # filter
-      object_list = ["id", "user_id", "title", "created_at", "thumbnail", :tag_list]
+      object_list = ["id", "user_id", "title", "created_at", "thumbnail", "description", :tag_list]
       one_object = one_object.select {|k,v| object_list.include?(k)}
       # push
       projects_list.push(one_object)
